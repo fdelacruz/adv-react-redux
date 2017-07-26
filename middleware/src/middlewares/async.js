@@ -7,6 +7,13 @@ export default function({ dispatch }) {
       return next(action);
     }
 
-    console.log('We have a Promise', action);
+    // Make sure the action's Promise resolves
+    action.payload
+      .then(function(response) { 
+        // create a new action with the old type, but
+        // replace the Promise with teh response data
+        const newAction = { ...action, payload: response };
+        dispatch(newAction);
+      });
   };
 }
