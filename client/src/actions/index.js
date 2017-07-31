@@ -1,4 +1,5 @@
 export function sininUser({ email, password }) {
+  return function(dispatch) {
   // Submit email/password to the server
 
   // If request is good:
@@ -8,4 +9,5 @@ export function sininUser({ email, password }) {
 
   // if request is BAD:
   // - Show an error to the user
+  };
 }
